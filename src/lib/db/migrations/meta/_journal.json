@@ -5,22 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1756292763192,
-      "tag": "0000_optimal_screwball",
+      "when": 1756491201635,
+      "tag": "0000_modern_arclight",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1756313821490,
-      "tag": "0001_friendly_mother_askani",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1756314861790,
-      "tag": "0002_lying_roland_deschain",
+      "when": 1756493532178,
+      "tag": "0001_perfect_darkstar",
       "breakpoints": true
     }
   ]
