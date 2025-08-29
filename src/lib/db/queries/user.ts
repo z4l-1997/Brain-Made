@@ -1,22 +1,26 @@
 import "server-only";
 
 import { and, asc, count, desc, eq, gt, gte, inArray, lt, type SQL } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
-import { ChatSDKError } from "../errors";
-import { User, user } from "./schema/user";
-import { generateHashedPassword } from "./utils";
-import { generateUUID } from "../utils";
-
-// biome-ignore lint: Forbidden non-null assertion.
-const client = postgres(process.env.POSTGRES_URL!);
-const db = drizzle(client);
+import { ChatSDKError } from "../../errors";
+import { User, user } from "../schema/user";
+import { generateHashedPassword } from "../utils";
+import { generateUUID } from "../../utils";
+import { db } from "./";
 
 export async function getUser(email: string): Promise<Array<User>> {
   try {
     return await db.select().from(user).where(eq(user.email, email));
   } catch (error) {
     throw new ChatSDKError("bad_request:database", "Failed to get user by email");
+  }
+}
+
+export async function getUserById(id: string): Promise<User | null> {
+  try {
+    const result = await db.select().from(user).where(eq(user.id, id)).limit(1);
+    return result[0] || null;
+  } catch (error) {
+    throw new ChatSDKError("bad_request:database", "Failed to get user by ID");
   }
 }
 
@@ -53,5 +57,21 @@ export async function getAllUsers(): Promise<Array<User>> {
     return await db.select().from(user).orderBy(asc(user.email));
   } catch (error) {
     throw new ChatSDKError("bad_request:database", "Failed to get all users");
+  }
+}
+
+export async function updateUser(id: string, updates: Partial<User>) {
+  try {
+    return await db.update(user).set(updates).where(eq(user.id, id)).returning();
+  } catch (error) {
+    throw new ChatSDKError("bad_request:database", "Failed to update user");
+  }
+}
+
+export async function deleteUser(id: string) {
+  try {
+    return await db.delete(user).where(eq(user.id, id)).returning();
+  } catch (error) {
+    throw new ChatSDKError("bad_request:database", "Failed to delete user");
   }
 }
