@@ -1,9 +1,9 @@
 import "server-only";
 
 import { and, asc, count, desc, eq, gt, gte, inArray, lt, lte, like, type SQL } from "drizzle-orm";
-import { ChatSDKError } from "../../errors";
-import { tools, ToolStatus, type Tool, type NewTool } from "../schema/tools";
-import { db } from "./";
+import { ChatSDKError } from "@/lib/errors";
+import { tools, ToolStatus, type Tool, type NewTool } from "@/lib/db/schema/tools";
+import { db } from "@/lib/db/queries";
 
 // Lấy tất cả tools với pagination và filter
 export async function getAllTools(options?: {

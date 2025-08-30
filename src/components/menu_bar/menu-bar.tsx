@@ -60,6 +60,10 @@ const menuItems: MenuItem[] = [
   },
 ];
 
+// Safelist for Tailwind CSS to ensure hover classes are included
+// group-hover:text-blue-500 group-hover:text-orange-500 group-hover:text-green-500
+// group-hover:text-red-500 group-hover:text-pink-500 group-hover:text-cyan-500
+
 const itemVariants = {
   initial: { rotateX: 0, opacity: 1 },
   hover: { rotateX: -90, opacity: 0 },
@@ -154,6 +158,13 @@ export default function MenuBar() {
                   }}
                   animate={active ? "hover" : "initial"}
                 />
+                <motion.div
+                  className="absolute inset-0 z-0 pointer-events-none rounded-2xl"
+                  variants={glowVariants}
+                  style={{
+                    background: item.gradient,
+                  }}
+                />
                 <MotionLink
                   href={item.href}
                   className={`flex items-center gap-2 px-4 py-2 relative z-10 transition-colors rounded-xl ${
@@ -167,7 +178,7 @@ export default function MenuBar() {
                 >
                   <span
                     className={`transition-colors duration-300 ${
-                      active ? item.iconColor : `group-hover:${item.iconColor} text-foreground`
+                      active ? item.iconColor : `text-muted-foreground group-hover:${item.iconColor}`
                     }`}
                   >
                     {item.icon}
@@ -187,7 +198,7 @@ export default function MenuBar() {
                 >
                   <span
                     className={`transition-colors duration-300 ${
-                      active ? item.iconColor : `group-hover:${item.iconColor} text-foreground`
+                      active ? item.iconColor : `text-muted-foreground group-hover:${item.iconColor}`
                     }`}
                   >
                     {item.icon}

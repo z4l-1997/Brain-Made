@@ -17,7 +17,7 @@ export default function MarketingPage() {
   return (
     <>
       <h1 className="sr-only">Brain Made - Developer Resources Platform</h1>
-      <div>Hiêu</div>
+      <div>Home Page</div>
     </>
   );
 }

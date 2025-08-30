@@ -1,11 +1,11 @@
 import "server-only";
 
 import { and, asc, count, desc, eq, gt, gte, inArray, lt, type SQL } from "drizzle-orm";
-import { ChatSDKError } from "../../errors";
-import { User, user } from "../schema/user";
-import { generateHashedPassword } from "../utils";
-import { generateUUID } from "../../utils";
-import { db } from "./";
+import { ChatSDKError } from "@/lib/errors";
+import { User, user } from "@/lib/db/schema/user";
+import { generateHashedPassword } from "../_lib/utils";
+import { generateUUID } from "@/lib/utils";
+import { db } from "@/lib/db/queries";
 
 export async function getUser(email: string): Promise<Array<User>> {
   try {
