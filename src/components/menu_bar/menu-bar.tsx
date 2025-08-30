@@ -18,46 +18,46 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     icon: <Wrench className="h-5 w-5" />,
-    label: "Developer Tools",
-    href: "/tools",
+    label: "Toolkit",
+    href: "/toolkit",
     gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
     iconColor: "text-blue-500",
   },
   {
     icon: <Bot className="h-5 w-5" />,
-    label: "AI Assistant",
-    href: "/ai",
+    label: "AI Toolkit",
+    href: "/ai-toolkit",
     gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
     iconColor: "text-orange-500",
   },
-  {
-    icon: <Palette className="h-5 w-5" />,
-    label: "CSS Framework",
-    href: "/css",
-    gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
-    iconColor: "text-green-500",
-  },
-  {
-    icon: <Zap className="h-5 w-5" />,
-    label: "Code Snippets",
-    href: "/snippets",
-    gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
-    iconColor: "text-red-500",
-  },
-  {
-    icon: <Star className="h-5 w-5" />,
-    label: "Trending Repos",
-    href: "/trending",
-    gradient: "radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(219,39,119,0.06) 50%, rgba(190,24,93,0) 100%)",
-    iconColor: "text-pink-500",
-  },
-  {
-    icon: <Globe className="h-5 w-5" />,
-    label: "Open Source",
-    href: "/opensource",
-    gradient: "radial-gradient(circle, rgba(6,182,212,0.15) 0%, rgba(8,145,178,0.06) 50%, rgba(14,116,144,0) 100%)",
-    iconColor: "text-cyan-500",
-  },
+  // {
+  //   icon: <Palette className="h-5 w-5" />,
+  //   label: "CSS Framework",
+  //   href: "/css",
+  //   gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
+  //   iconColor: "text-green-500",
+  // },
+  // {
+  //   icon: <Zap className="h-5 w-5" />,
+  //   label: "Code Snippets",
+  //   href: "/snippets",
+  //   gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+  //   iconColor: "text-red-500",
+  // },
+  // {
+  //   icon: <Star className="h-5 w-5" />,
+  //   label: "Trending Repos",
+  //   href: "/trending",
+  //   gradient: "radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(219,39,119,0.06) 50%, rgba(190,24,93,0) 100%)",
+  //   iconColor: "text-pink-500",
+  // },
+  // {
+  //   icon: <Globe className="h-5 w-5" />,
+  //   label: "Open Source",
+  //   href: "/opensource",
+  //   gradient: "radial-gradient(circle, rgba(6,182,212,0.15) 0%, rgba(8,145,178,0.06) 50%, rgba(14,116,144,0) 100%)",
+  //   iconColor: "text-cyan-500",
+  // },
 ];
 
 // Safelist for Tailwind CSS to ensure hover classes are included

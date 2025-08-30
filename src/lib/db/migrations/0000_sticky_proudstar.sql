@@ -9,6 +9,7 @@ CREATE TABLE "Tools" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"title" varchar(255) NOT NULL,
 	"description" text NOT NULL,
+	"description_vi" text,
 	"url" varchar(500) NOT NULL,
 	"category" varchar(100) NOT NULL,
 	"tags" jsonb NOT NULL,

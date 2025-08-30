@@ -5,15 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1756491201635,
-      "tag": "0000_modern_arclight",
+      "when": 1756564251097,
+      "tag": "0000_sticky_proudstar",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1756493532178,
-      "tag": "0001_perfect_darkstar",
+      "when": 1756571905990,
+      "tag": "0001_loud_shotgun",
       "breakpoints": true
     }
   ]

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createTool, getAllTools } from "@/lib/db/queries/tools";
+import { createTool, getAllTools } from "@/features/marketing/tools/_db/queries";
 import { ToolStatus, type NewTool } from "@/lib/db/schema/tools";
 
 // Validation helper
@@ -25,12 +25,6 @@ function validateToolData(data: unknown): { isValid: boolean; errors: string[] }
   if (!toolData.category || typeof toolData.category !== "string" || !toolData.category.trim()) {
     errors.push("Category is required");
   }
-  if (!Array.isArray(toolData.tags) || toolData.tags.length === 0) {
-    errors.push("Tags must be a non-empty array");
-  }
-  if (!toolData.createdBy || typeof toolData.createdBy !== "string" || !toolData.createdBy.trim()) {
-    errors.push("Created by is required");
-  }
 
   // Validate URL format
   if (toolData.url && typeof toolData.url === "string") {
@@ -39,11 +33,6 @@ function validateToolData(data: unknown): { isValid: boolean; errors: string[] }
     } catch {
       errors.push("Invalid URL format");
     }
-  }
-
-  // Validate rating range
-  if (toolData.rating !== undefined && typeof toolData.rating === "number" && (toolData.rating < 0 || toolData.rating > 5)) {
-    errors.push("Rating must be between 0 and 5");
   }
 
   // Validate status
@@ -106,16 +95,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Validation failed", details: validation.errors }, { status: 400 });
     }
 
-    const { title, description, url, category, tags, featured = false, rating = 0, image, createdBy, status = ToolStatus.ACTIVE } = body;
+    const { title, description, descriptionVi, url, category, featured = false, image, createdBy, status = ToolStatus.ACTIVE } = body;
 
     const newTool: NewTool = {
       title: title.trim(),
       description: description.trim(),
+      descriptionVi: descriptionVi?.trim() || null,
       url: url.trim(),
       category: category.trim(),
-      tags: tags.map((tag: string) => tag.trim()).filter(Boolean),
       featured: Boolean(featured),
-      rating: Math.max(0, Math.min(5, Number(rating) || 0)),
       image: image?.trim() || null,
       createdBy,
       status,

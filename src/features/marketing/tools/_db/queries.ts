@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "server-only";
 
-import { and, asc, count, desc, eq, gt, gte, inArray, lt, lte, like, type SQL } from "drizzle-orm";
+import { and, asc, count, desc, eq, gte, inArray, lt, lte, like, type SQL } from "drizzle-orm";
 import { ChatSDKError } from "@/lib/errors";
 import { tools, ToolStatus, type Tool, type NewTool } from "@/lib/db/schema/tools";
 import { db } from "@/lib/db/queries";
@@ -21,7 +22,7 @@ export async function getAllTools(options?: {
     const conditions: SQL[] = [eq(tools.status, status)];
 
     if (category) {
-      conditions.push(eq(tools.category, category));
+      conditions.push(eq(tools.category, category as any));
     }
 
     if (featured !== undefined) {
@@ -98,8 +99,8 @@ export async function getToolsByCategory(category: string, limit = 10): Promise<
     return await db
       .select()
       .from(tools)
-      .where(and(eq(tools.category, category), eq(tools.status, ToolStatus.ACTIVE)))
-      .orderBy(desc(tools.rating), desc(tools.createdAt))
+      .where(and(eq(tools.category, category as any), eq(tools.status, ToolStatus.ACTIVE)))
+      .orderBy(desc(tools.createdAt), desc(tools.featured))
       .limit(limit);
   } catch (error) {
     throw new ChatSDKError("bad_request:database", "Failed to get tools by category");
@@ -113,24 +114,24 @@ export async function getFeaturedTools(limit = 6): Promise<Tool[]> {
       .select()
       .from(tools)
       .where(and(eq(tools.featured, true), eq(tools.status, ToolStatus.ACTIVE)))
-      .orderBy(desc(tools.rating), desc(tools.createdAt))
+      .orderBy(desc(tools.createdAt))
       .limit(limit);
   } catch (error) {
     throw new ChatSDKError("bad_request:database", "Failed to get featured tools");
   }
 }
 
-// Lấy top rated tools
+// Lấy top rated tools - now returns latest featured tools instead
 export async function getTopRatedTools(limit = 10): Promise<Tool[]> {
   try {
     return await db
       .select()
       .from(tools)
-      .where(and(eq(tools.status, ToolStatus.ACTIVE), gt(tools.rating, 0)))
-      .orderBy(desc(tools.rating), desc(tools.createdAt))
+      .where(eq(tools.status, ToolStatus.ACTIVE))
+      .orderBy(desc(tools.featured), desc(tools.createdAt))
       .limit(limit);
   } catch (error) {
-    throw new ChatSDKError("bad_request:database", "Failed to get top rated tools");
+    throw new ChatSDKError("bad_request:database", "Failed to get top tools");
   }
 }
 
@@ -150,7 +151,7 @@ export async function searchTools(query: string, limit = 20): Promise<Tool[]> {
       .select()
       .from(tools)
       .where(and(eq(tools.status, ToolStatus.ACTIVE), like(tools.title, `%${query}%`)))
-      .orderBy(desc(tools.rating), desc(tools.createdAt))
+      .orderBy(desc(tools.featured), desc(tools.createdAt))
       .limit(limit);
   } catch (error) {
     throw new ChatSDKError("bad_request:database", "Failed to search tools");

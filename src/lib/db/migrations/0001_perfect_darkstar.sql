@@ -1,1 +1,0 @@
-ALTER TABLE "Tools" ADD COLUMN "description_vi" text;

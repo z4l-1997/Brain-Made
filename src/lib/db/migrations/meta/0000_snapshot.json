@@ -1,5 +1,5 @@
 {
-  "id": "8f918f6d-3d99-41a6-a56e-7646feec86bc",
+  "id": "4407edbb-4df6-4e0b-a589-63dcb0d36172",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -65,6 +65,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "description_vi": {
+          "name": "description_vi",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "url": {
           "name": "url",

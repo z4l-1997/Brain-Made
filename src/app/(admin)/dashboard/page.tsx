@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { getAllUsers } from "@/lib/db/queries";
 import type { User } from "@/lib/db/schema/user";
+import { getAllUsers } from "@/features/auth/login/_db/queries";
 
 async function UserList() {
   const users = await getAllUsers();
