@@ -1,6 +1,6 @@
 {
-  "id": "e8a8b48b-5e76-4f37-842a-180d3b0e04ce",
-  "prevId": "8f918f6d-3d99-41a6-a56e-7646feec86bc",
+  "id": "a512a937-4cfe-466b-8e2b-d6939db4c735",
+  "prevId": "4407edbb-4df6-4e0b-a589-63dcb0d36172",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -84,25 +84,12 @@
           "primaryKey": false,
           "notNull": true
         },
-        "tags": {
-          "name": "tags",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": true
-        },
         "featured": {
           "name": "featured",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
           "default": false
-        },
-        "rating": {
-          "name": "rating",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
         },
         "image": {
           "name": "image",

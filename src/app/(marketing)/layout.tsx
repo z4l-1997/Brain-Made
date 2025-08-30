@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { StaticMenuBar, ClientMenuBar } from "@/components/menu-bar";
+import { StaticMenuBar, ClientMenuBar } from "@/components/menu_bar";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (

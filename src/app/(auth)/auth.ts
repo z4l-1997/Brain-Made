@@ -1,9 +1,9 @@
 import { compare } from "bcrypt-ts";
 import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { createGuestUser, getUser } from "@/lib/db/queries/user";
+import { createGuestUser, getUser } from "@/features/auth/login/_db/queries";
 import { authConfig } from "./auth.config";
-import { DUMMY_PASSWORD } from "@/lib/constants";
+import { DUMMY_PASSWORD } from "@/features/auth/login/_lib/constants";
 import type { DefaultJWT } from "next-auth/jwt";
 
 export type UserType = "guest" | "regular" | "admin";
