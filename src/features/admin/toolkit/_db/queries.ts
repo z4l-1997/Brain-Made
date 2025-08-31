@@ -4,20 +4,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { tools, type Tool, type NewTool, ToolCategory, ToolStatus } from "@/lib/db/schema/tools";
 import { eq, desc, ilike, and, or, count, sql } from "drizzle-orm";
-
-// Sử dụng connection từ environment với connection pooling
-const connectionString = process.env.POSTGRES_URL;
-
-if (!connectionString) {
-  throw new Error("POSTGRES_URL environment variable is not set");
-}
-
-const client = postgres(connectionString, {
-  max: 10, // Maximum number of connections
-  idle_timeout: 20, // Close connections after 20 seconds of inactivity
-  connect_timeout: 10, // Timeout after 10 seconds when connecting
-});
-const db = drizzle(client);
+import { db } from "@/lib/db/queries";
 
 // Helper function to handle database errors
 function handleDatabaseError(error: unknown, operation: string): never {

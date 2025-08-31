@@ -1,8 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { createTool, updateTool, deleteTool } from "./queries";
+import { createTool, updateTool, deleteTool } from "./_db/queries";
 import type { Tool, NewTool } from "@/lib/db/schema/tools";
 import { ToolCategory, ToolStatus } from "@/lib/db/schema/tools";
 import { auth } from "@/app/(auth)/auth";
