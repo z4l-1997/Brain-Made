@@ -3,8 +3,8 @@ import { Metadata } from "next";
 
 import { ToolStatus } from "@/lib/db/schema/tools";
 
-import ToolsClientPage from "@/features/marketing/tools/_views/tools-client-page";
-import { getAllTools } from "@/features/marketing/tools/_db/queries";
+import ToolsClientPage from "@/features/marketing/toolkit/_views/tools-client-page";
+import { getAllTools } from "@/features/marketing/toolkit/actions";
 
 export const metadata: Metadata = {
   title: "Brain Made - Developer Tools & Resources",

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createTool, getAllTools } from "@/features/marketing/tools/_db/queries";
+import { createTool, getAllTools } from "@/features/marketing/toolkit/actions";
 import { ToolStatus, type NewTool } from "@/lib/db/schema/tools";
 
 // Validation helper

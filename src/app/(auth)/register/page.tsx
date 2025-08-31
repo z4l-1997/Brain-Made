@@ -1,4 +1,4 @@
-import RegisterClientPage from "@/features/auth/register/_view/register-client-page";
+import RegisterClientPage from "@/features/auth/_views/register-client-page";
 
 export default function page() {
   return <RegisterClientPage />;
