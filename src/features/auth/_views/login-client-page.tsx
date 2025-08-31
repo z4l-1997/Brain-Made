@@ -8,8 +8,8 @@ import { useSession } from "next-auth/react";
 
 import { SubmitButton } from "@/components/submit-button";
 
-import { login, type LoginActionState } from "../../_lib/actions";
-import { AuthForm } from "../../_component/auth-form";
+import { login, type LoginActionState } from "../actions";
+import { AuthForm } from "../_component/auth-form";
 
 export default function LoginClientPage() {
   const router = useRouter();

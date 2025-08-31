@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 
-import { createUser, getUser } from "@/features/auth/login/_db/queries";
+import { createUser, getUser } from "@/features/auth/_db/queries";
 
 import { signIn } from "@/app/(auth)/auth";
 

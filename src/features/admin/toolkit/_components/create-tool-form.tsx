@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ImageUpload } from "./image-upload";
 import { ToolStatus, ToolCategory, type NewTool } from "@/lib/db/schema/tools";
 
 interface CreateToolFormProps {
@@ -184,21 +185,18 @@ export function CreateToolForm({ open, onSubmit, onCancel }: CreateToolFormProps
             <div className="space-y-4">
               <div className="border-b pb-2">
                 <h3 className="text-lg font-medium">Hình ảnh</h3>
-                <p className="text-sm text-muted-foreground">Thông tin bổ sung về tool</p>
+                <p className="text-sm text-muted-foreground">Upload hình ảnh cho tool</p>
               </div>
 
-              {/* Image URL */}
-              <div className="space-y-2">
-                <Label htmlFor="image">URL Hình ảnh</Label>
-                <Input
-                  id="image"
-                  type="url"
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="https://example.com/logo.png"
-                />
-                <p className="text-xs text-muted-foreground">Logo hoặc screenshot của tool</p>
-              </div>
+              {/* Image Upload */}
+              <ImageUpload
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+                folder="tools"
+                disabled={isSubmitting}
+                toolName={formData.title || "Tool mới"}
+                toolUrl={formData.url}
+              />
             </div>
 
             {/* Settings Section */}
