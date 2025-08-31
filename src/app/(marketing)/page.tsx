@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Brain Made - Developer Tools & Resources",
@@ -14,10 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function MarketingPage() {
-  return (
-    <>
-      <h1 className="sr-only">Brain Made - Developer Resources Platform</h1>
-      <div>Home Page</div>
-    </>
-  );
+  return redirect("/toolkit");
 }
